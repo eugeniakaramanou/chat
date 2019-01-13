@@ -1,0 +1,112 @@
+$max-width: 640px;
+
+$white: #ffffff;
+$blue: #3798D4;
+$orange: #FF876D;
+$yellow: #FCF6C5;
+$border-color: #cccccc;
+$secondary-text-color: #838180;
+$text-color: #bababa;
+
+$border-radius: 4px;
+
+$spacing-unit: 8px;
+$spacing-xs: $spacing-unit / 2; // 4px
+$spacing-s: $spacing-unit; // 8px
+$spacing-m: 2 * $spacing-unit; // 16px
+$spacing-l: 3 * $spacing-unit; // 24px
+
+.app {
+    background: url("./styles/body.png");
+}
+
+.chat-board {
+    display: flex;
+    flex-direction: column;
+    justify-items: flex-end;
+    align-items: center;
+}
+
+.chat-board__title {
+
+}
+
+.messages {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-items: flex-start;
+    max-width: $max-width;
+    margin: 0 24px;
+    width: 100%;
+}
+
+.messages__title {
+    font-size: 14px;
+    color: $secondary-text-color;
+    padding: 0;
+    margin: 0 0 $spacing-m 0;
+}
+
+.message {
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    padding: $spacing-m;
+    margin-bottom: $spacing-s;
+    background-color: $white;
+}
+
+.message--from-user {
+    background-color: $yellow;
+    align-self: flex-end;
+}
+
+.author {
+    color: $secondary-text-color;
+    font-size: 12px;
+}
+
+.text {
+    padding: $spacing-xs 0;
+}
+
+.date {
+    color: $secondary-text-color;
+    font-size: 12px;
+}
+
+.chat-form {
+    background: $blue;
+    padding: $spacing-s;
+    margin-top: $spacing-m;
+    width: 100%;
+}
+
+.chat-form__wrapper {
+    max-width: $max-width;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.add-message {
+    border-radius: $border-radius;
+    padding: $spacing-s;
+    border: 2px solid #2E76A3;
+    flex: 1;
+    font-size: 14px;
+    margin-right: $spacing-s;
+}
+
+.send-message {
+    background-color: $orange;
+    border-radius: $border-radius;
+    border: 2px solid #E67E65;
+    color: $white;
+    font-weight: bold;
+    font-size: 14px;
+    padding: $spacing-m;
+        &:hover {
+            background-color: #E67E65;
+        }
+}
