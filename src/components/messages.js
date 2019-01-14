@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Message from './Message';
+import Message from './message';
 
 class Messages extends Component {
     render() {
@@ -16,7 +16,7 @@ class Messages extends Component {
             <div className="messages">
                 <h1 className="messages__title">{this.props.title}</h1>
                 {messages}
-                <Message className="message--from-user"/>
+                <Message />
             </div>
         );
     }
