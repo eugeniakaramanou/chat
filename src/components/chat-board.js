@@ -9,7 +9,7 @@ class ChatBoard extends Component {
         return (
             <div className="chat-board">
                 <h1 className="chat-board__title">Chat Room</h1>
-                <Messages messages={this.props.messages} />
+                <Messages messages={this.props.messages} user={this.props.user} />
                 <ChatForm chatCallbacks={this.props.chatCallbacks} />
             </div>
         );
@@ -17,25 +17,13 @@ class ChatBoard extends Component {
 }
 
 ChatBoard.propTypes = {
+    chatCallbacks: PropTypes.object,
     messages: PropTypes.arrayOf(PropTypes.object),
-    chatCallbacks: PropTypes.object
+    user: PropTypes.string.isRequired
 };
 
 ChatBoard.defaultProps = {
-    messages: [
-        {
-            id: 1,
-            author: 'skouirmi',
-            text: 'hello',
-            date: '2 hours before'
-        },
-        {
-            id: 2,
-            author: 'tap dancer',
-            text: 'hey',
-            date: '1 hours before'
-        }
-    ]
+    messages: []
 };
 
 export default ChatBoard;

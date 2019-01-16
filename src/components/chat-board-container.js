@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import update from 'react-addons-update';
 import ChatBoard from './chat-board';
-import 'whatwg-fetch';
+import fetch from 'cross-fetch';
 
 const API_URL= 'https://chatty.kubernetes.doodle-test.com/api/chatty/v1.0';
 const API_HEADERS = {
     'Content-Type': 'application/json',
-    'token': '4QhmRwHwwrgFqXULXNtx4d'
+    'token': '6bMaqT4jsfNY'
 };
 
 class ChatBoardContainer extends Component {
@@ -21,7 +21,6 @@ class ChatBoardContainer extends Component {
         fetch(`${API_URL}`, {headers: API_HEADERS})
             .then((response) => response.json())
             .then((responseData) => {
-                console.log('if ever', responseData);
                 this.setState({messages: responseData});
                 window.state = this.state;
             })
@@ -32,27 +31,26 @@ class ChatBoardContainer extends Component {
 
     render() {
         return <ChatBoard messages={this.state.messages}
-                          chatCallbacks={{
-                              addMessage: this.addMessage.bind(this)}} />
+                          user={this.props.user}
+                          chatCallbacks={{addMessage: this.addMessage.bind(this)}} />
     }
 
-    addMessage(author, text) {
+    addMessage(text) {
         let prevState = this.state;
         let newMessage = {
-            author,
-            message: text
-            // date: Date.now() // TODO check for error here
+            author: this.props.user,
+            message: text,
+            timestamp: Date.now()
         };
         let nextState = update(this.state.messages, {
-            $push: [newMessage] // TODO check for error here
+            $push: [newMessage]
         });
 
         this.setState({messages:nextState});
 
         fetch(`${API_URL}`, {
-            method: 'post',
+            method: 'POST',
             headers: API_HEADERS,
-            credentials: 'include',
             body: JSON.stringify(newMessage)
         }).then(response => {
             if (response.ok) {
@@ -65,7 +63,7 @@ class ChatBoardContainer extends Component {
             this.setState({messages:nextState});
         }).catch(error => {
             console.error("Fetch error:", error);
-            this.setState(prevState)
+            this.setState(prevState);
         });
     }
 }
