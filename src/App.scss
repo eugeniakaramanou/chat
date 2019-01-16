@@ -16,43 +16,75 @@ $spacing-s: $spacing-unit; // 8px
 $spacing-m: 2 * $spacing-unit; // 16px
 $spacing-l: 3 * $spacing-unit; // 24px
 
-.app {
-    background: url("./styles/body.png");
+.body-content {
+    display: block;
+    height: 100%;
+}
+
+.user-container {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.username-input {
+    margin-right: $spacing-s;
+    padding: $spacing-s;
+    border: 2px solid $border-color;
+    border-radius: $border-radius;
+    font-size: 14px;
+    flex: 1;
+}
+
+.username-submit {
+    margin: $spacing-l;
+    padding: $spacing-s;
+    border: 2px solid #E67E65;
+    border-radius: $border-radius;
+    background-color: $orange;
+    font-size: 14px;
+    font-weight: bold;
+    color: $white;
+    &:hover {
+        background-color: #E67E65;
+    }
 }
 
 .chat-board {
     display: flex;
     flex-direction: column;
     justify-items: flex-end;
-    align-items: center;
 }
 
 .chat-board__title {
-
+    align-self: center;
 }
 
 .messages {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-items: flex-start;
     max-width: $max-width;
     margin: 0 24px;
-    width: 100%;
+    align-items: flex-start;
+    justify-items: flex-start;
+    @media only screen and (min-width: 768px) {
+        margin: 0 auto;
+        min-width: 640px;
+    }
 }
 
 .messages__title {
+    margin: 0 0 $spacing-m 0;
+    padding: 0;
     font-size: 14px;
     color: $secondary-text-color;
-    padding: 0;
-    margin: 0 0 $spacing-m 0;
 }
 
 .message {
+    max-width: 65%;
+    margin-bottom: $spacing-s;
+    padding: $spacing-m;
     border: 1px solid $border-color;
     border-radius: $border-radius;
-    padding: $spacing-m;
-    margin-bottom: $spacing-s;
     background-color: $white;
 }
 
@@ -62,8 +94,8 @@ $spacing-l: 3 * $spacing-unit; // 24px
 }
 
 .author {
-    color: $secondary-text-color;
     font-size: 12px;
+    color: $secondary-text-color;
 }
 
 .text {
@@ -71,42 +103,45 @@ $spacing-l: 3 * $spacing-unit; // 24px
 }
 
 .date {
-    color: $secondary-text-color;
     font-size: 12px;
+    color: $secondary-text-color;
 }
 
 .chat-form {
-    background: $blue;
-    padding: $spacing-s;
-    margin-top: $spacing-m;
     width: 100%;
+    margin-top: $spacing-m;
+    padding: $spacing-s 0;
+    background: $blue;
 }
 
 .chat-form__wrapper {
-    max-width: $max-width;
-    margin: auto;
     display: flex;
+    max-width: $max-width;
+    margin: 0 $spacing-s;
     justify-content: center;
+    @media only screen and (min-width: 768px) {
+        margin: 0 auto;
+    }
 }
 
 .add-message {
-    border-radius: $border-radius;
+    margin-right: $spacing-s;
     padding: $spacing-s;
     border: 2px solid #2E76A3;
-    flex: 1;
+    border-radius: $border-radius;
     font-size: 14px;
-    margin-right: $spacing-s;
+    flex: 1;
 }
 
 .send-message {
-    background-color: $orange;
-    border-radius: $border-radius;
-    border: 2px solid #E67E65;
-    color: $white;
-    font-weight: bold;
-    font-size: 14px;
     padding: $spacing-m;
-        &:hover {
-            background-color: #E67E65;
-        }
+    border: 2px solid #E67E65;
+    border-radius: $border-radius;
+    background-color: $orange;
+    font-size: 14px;
+    font-weight: bold;
+    color: $white;
+    &:hover {
+        background-color: #E67E65;
+    }
 }

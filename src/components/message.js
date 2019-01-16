@@ -21,14 +21,14 @@ Message.propTypes = {
     author: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     date: PropTypes.number.isRequired,
-    personal: PropTypes.bool.isRequired
+    personalMessage: PropTypes.bool.isRequired
 };
 
 Message.defaultProps = {
     author: 'Random Author',
     text: 'hellooo',
     date: 1547464499488,
-    personal: false
+    personalMessage: false
 };
 
 export default Message;

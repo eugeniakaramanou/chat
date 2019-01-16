@@ -9,13 +9,6 @@ class App extends Component {
         this.userSubmitHandler = this.userSubmitHandler.bind(this);
         this.userChangeHandler = this.userChangeHandler.bind(this);
     }
-    // render() {
-    //   return (
-    //     <div className="app">
-    //       <ChatBoardContainer />
-    //     </div>
-    //   );
-    // }
     userChangeHandler(event) {
         this.setState({ user: event.target.value });
     }
@@ -32,15 +25,19 @@ class App extends Component {
             )
         }
         return (
-            <form onSubmit={this.userSubmitHandler} className="username-container">
-                <h1>Chat Room</h1>
+            <form onSubmit={this.userSubmitHandler} className="user-container">
+                <h1 className="heading">Chat Room</h1>
                 <div>
                     <input type="text"
+                        className="username-input"
                         onChange={this.userChangeHandler}
                         placeholder="Enter your name..."
                         required />
                 </div>
-                <input type="submit" value="Submit" />
+                <input type="submit"
+                       value="Submit"
+                       className="username-submit"
+                />
             </form>
         );
     }

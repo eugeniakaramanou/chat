@@ -18,15 +18,23 @@ class ChatBoardContainer extends Component {
     }
 
     componentDidMount() {
-        fetch(`${API_URL}`, {headers: API_HEADERS})
+        const currentTime = Date.now();
+        this.timer = setInterval(() =>
+            fetch(`${API_URL}?since=${currentTime}&limit=10`, {headers: API_HEADERS})
             .then((response) => response.json())
-            .then((responseData) => {
-                this.setState({messages: responseData});
-                window.state = this.state;
-            })
-            .catch((error) => {
-                console.log('Error fetching the messages from api', error);
-            });
+                .then((responseData) => {
+                    this.setState({messages: responseData});
+                    window.state = this.state;
+                })
+                .catch((error) => {
+                    console.log('Error fetching the messages from api', error);
+                }),
+        1000);
+    }
+
+    componentWillUnmount() {
+        clearInterval(this.timer);
+        this.timer = null;
     }
 
     render() {
@@ -48,7 +56,7 @@ class ChatBoardContainer extends Component {
 
         this.setState({messages:nextState});
 
-        fetch(`${API_URL}`, {
+        fetch(API_URL, {
             method: 'POST',
             headers: API_HEADERS,
             body: JSON.stringify(newMessage)
